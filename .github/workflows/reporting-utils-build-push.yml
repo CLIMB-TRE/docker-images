@@ -9,11 +9,11 @@ jobs:
   check-changes:
     runs-on: ubuntu-latest
     outputs:
-      reporting-utils: ${{ steps.changes.outputs.reporting-utils }}
+      reporting-utils: ${{ steps.check-changes.outputs.reporting-utils }}
     steps:
       - uses: actions/checkout@v3
       - uses: dorny/paths-filter@v2
-        id: changes
+        id: check-changes
         with:
           filters: |
             reporting-utils:
@@ -21,7 +21,7 @@ jobs:
 
   build-push-reporting-utils:
     needs: check-changes
-    if: ${{ needs.changes.outputs.reporting-utils == 'true' }}
+    if: ${{ needs.check-changes.outputs.reporting-utils == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: docker/metadata-action@v5
