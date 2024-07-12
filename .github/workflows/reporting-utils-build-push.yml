@@ -21,7 +21,7 @@ jobs:
 
   build-push-reporting-utils:
     needs: check-changes
-    # if: ${{ needs.check-changes.outputs.reporting-utils == 'true' }}
+    if: ${{ needs.check-changes.outputs.reporting-utils == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Docker meta
