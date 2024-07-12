@@ -21,7 +21,7 @@ jobs:
 
   build-push-reporting-utils:
     needs: check-changes
-    if: ${{ needs.check-changes.outputs.reporting-utils == 'true' }}
+    # if: ${{ needs.check-changes.outputs.reporting-utils == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: docker/metadata-action@v5
@@ -47,7 +47,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./reporting-utils/
+          context: "{{defaultContext}}:reporting-utils"
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
