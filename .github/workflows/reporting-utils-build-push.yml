@@ -60,6 +60,7 @@ jobs:
 
   build-push-nextflow:
     needs: check-changes
+    if: ${{ needs.check-changes.outputs.nextflow == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Docker meta
