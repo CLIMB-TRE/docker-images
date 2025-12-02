@@ -4,9 +4,8 @@ RUN yum install -y procps-ng shadow-utils which wget
 ENV NXF_HOME=/.nextflow
 
 # copy docker client
-RUN wget --directory-prefix /usr/local/bin/ https://github.com/nextflow-io/nextflow/releases/download/v25.04.8/nextflow
+RUN wget --directory-prefix /usr/local/bin/ https://github.com/nextflow-io/nextflow/releases/download/v25.11.0-edge/nextflow
 
-# download runtime
 RUN mkdir /.nextflow \
     && chmod 755 /usr/local/bin/nextflow \
     && nextflow info
